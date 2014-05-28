@@ -53,7 +53,7 @@
 			var qsOb = this.toObject() || {};
 			for(var p in params){
 				if(params.hasOwnProperty(p)){
-					qsOb[p] = params[p];
+					qsOb[p] = params[p] + ""; //Value is always a string
 				}
 			}
 			return qsOb;
@@ -62,8 +62,9 @@
 		changeTo: function(params){
 		//Change URL to a new querystring
 			var newQS = objectToQuerystring(params);
-			if(this.noGo)return this.string = newQS; //Set .noGo for tests
-			window.location.search = newQS;
+			this.string = newQS;
+			//Set .noGo for tests
+			if(!this.noGo)window.location.search = newQS;
 		}
 	};
 
