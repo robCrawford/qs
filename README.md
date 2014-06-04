@@ -28,6 +28,7 @@ Query string utilities
 	qs.set( {a:2} );
 
 //Remove params
+//This will navigate to a new URL
 	qs.remove( "a", "b" );
 
 //Change to new parameters
