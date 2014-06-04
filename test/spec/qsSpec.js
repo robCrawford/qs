@@ -38,13 +38,19 @@ describe("Querystring tests", function(){
 
 	it("Should merge in params", function(){
 		
-		var tempQS = qs.get(false, {z:88});
+		var tempQS = qs.get({z:77});
+
+		expect(tempQS).toEqual({
+			o: '0', z: '77'
+		});
+
+		tempQS = qs.toObject({z:88});
 
 		expect(tempQS).toEqual({
 			o: '0', z: '88'
 		});
 		
-		tempQS = qs.get(true, {z:99});
+		tempQS = qs.toString({z:99});
 
 		expect(tempQS).toEqual('?o=0&z=99');
 
@@ -52,11 +58,22 @@ describe("Querystring tests", function(){
 
 	it("Should change querystring", function(){
 		
+		//Object
 		qs.changeTo({w:5, x:7});
 
-		expect(qs.get()).toEqual({w:'5', x:'7'});
+		expect(qs.toObject()).toEqual({w:'5', x:'7'});
 
-		expect(qs.get(true)).toEqual("?w=5&x=7");
+		expect(qs.toString()).toEqual("?w=5&x=7");
+
+		//String, no question mark
+		qs.changeTo("h=9&i=10");
+
+		expect(qs.get()).toEqual({h:'9', i:'10'});
+
+		//String with question mark
+		qs.changeTo("?j=9&k=10");
+		
+		expect(qs.get()).toEqual({j:'9', k:'10'});
 
 	});
 

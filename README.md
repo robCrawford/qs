@@ -1,32 +1,39 @@
 qs
 ==
 
-*(No dependencies, 0.8kB minified)*  
-
 Query string utilities  
+*(No dependencies, 0.8kB minified)*  
 
 ```javascript
 
-//Add or edit params
-	qs.set( {a:2} );
-
-//Get (as an object)
+//Get query string as an object
 	qs.get();
+	qs.toObject();
 
-//Get (as a string)
-	qs.get(true);
+//Get edited query string as an object
+//(Supplied params are merged in)
+	qs.get( {a:1} );
+	qs.toObject( {a:1} );
+
+//Get query string as a string
+	qs.string; //Verbatim from URL
 	qs.toString();
 
-//Get (as a string) with added/edited params
-	qs.get( true, {a:1} );
+//Get edited query string as a string
+//(Supplied params are merged in)
+	qs.toString( {a:1} );
 
-//Get (as an object) with added/edited params
-	qs.get( false, {a:1} );
+//Add or edit params
+//This will navigate to a new URL
+	qs.set( {a:2} );
 
 //Remove params
-	qs.remove("a", "b");
+	qs.remove( "a", "b" );
 
 //Change to new parameters
-	qs.changeTo( {a:1} );
+//This will navigate to a new URL
+	qs.changeTo( {a:1, b:2} );
+	qs.changeTo( "a=1&b=2" );
+	qs.changeTo( "?a=1&b=2" );
 
 ```
