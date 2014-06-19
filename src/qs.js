@@ -35,11 +35,10 @@
 		//Compile query string params to a JS object
 		//Optional params [object] to merge in
 			var retOb = {},
-				currParams = this.string.substr(1).split('&').reverse(),
-				i = currParams.length,
+				currParams = this.string.substr(1).split('&'),
 				p;
 
-			while(i--){
+			for(var i=0, len=currParams.length; i<len; i++){
 				p = currParams[i];
 				if(p){
 					p = p.split('=');
