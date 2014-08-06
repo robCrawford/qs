@@ -7,16 +7,19 @@ Query string utilities
 ```javascript
 
 //Get query string as an object
-	qs.get();
+	qs.get(); 
+	//OR
 	qs.toObject();
 
 //Get edited query string as an object
 //(Supplied params are merged in)
-	qs.get( {a:1} );
+	qs.get( {a:1} ); 
+	//OR
 	qs.toObject( {a:1} );
 
 //Get query string as a string
-	qs.string; //Verbatim from URL
+	qs.string; 
+	//OR
 	qs.toString();
 
 //Get edited query string as a string
@@ -33,8 +36,10 @@ Query string utilities
 
 //Change to new parameters
 //This will navigate to a new URL
-	qs.changeTo( {a:1, b:2} );
-	qs.changeTo( "a=1&b=2" );
+	qs.changeTo( {a:1, b:2} ); 
+	//OR
+	qs.changeTo( "a=1&b=2" ); 
+	//OR
 	qs.changeTo( "?a=1&b=2" );
 
 ```
